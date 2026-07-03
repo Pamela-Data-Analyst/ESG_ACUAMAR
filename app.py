@@ -31,6 +31,19 @@ ICONS = ASSETS / "icons"
 CSS = ASSETS / "css" / "estilos.css"
 
 # ==========================================================
+# CARGAR ESTILOS CSS
+# ==========================================================
+
+def cargar_css():
+    with open(CSS, encoding="utf-8") as f:
+        st.markdown(
+            f"<style>{f.read()}</style>",
+            unsafe_allow_html=True
+        )
+
+cargar_css()
+
+# ==========================================================
 # CARGA DE DATOS
 # ==========================================================
 

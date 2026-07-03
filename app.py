@@ -22,9 +22,13 @@ BASE_DIR = Path(__file__).parent
 
 ASSETS = BASE_DIR / "assets"
 
-LOGO = ASSETS / "logo_acuamar.png"
+LOGO = ASSETS / "logos" / "logo_acuamar.png"
 
-BANNER = ASSETS / "banner_esg.png"
+BANNER = ASSETS / "banners" / "banner_esg.png"
+
+ICONS = ASSETS / "icons"
+
+CSS = ASSETS / "css" / "estilos.css"
 
 # ==========================================================
 # CARGA DE DATOS

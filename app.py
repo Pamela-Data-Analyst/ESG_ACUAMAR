@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
+from components.header import mostrar_header
 
 from utils.carga_datos import cargar_datos
 
@@ -74,9 +75,7 @@ with st.sidebar:
 # PORTADA
 # ==========================================================
 
-st.title("🌎 Dashboard ESG")
-
-st.subheader("Evaluación ESG de ACUAMAR S.A.")
+mostrar_header()
 
 st.markdown(
 """

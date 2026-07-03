@@ -6,7 +6,6 @@
 import streamlit as st
 from pathlib import Path
 from datetime import datetime
-import base64
 
 
 # ==========================================================
@@ -19,131 +18,82 @@ LOGO = BASE_DIR / "assets" / "logos" / "logo_acuamar.png"
 
 
 # ==========================================================
-# CONVERTIR IMAGEN A BASE64
-# ==========================================================
-
-def image_to_base64(image_path):
-
-    with open(image_path, "rb") as image_file:
-
-        encoded = base64.b64encode(image_file.read()).decode()
-
-    return encoded
-
-
-# ==========================================================
 # HEADER
 # ==========================================================
 
 def mostrar_header():
 
-    logo = image_to_base64(LOGO)
+    fecha = datetime.now().strftime("%d/%m/%Y")
 
-    fecha = datetime.now().strftime("%d %B %Y")
+    col_logo, col_info, col_fecha = st.columns([1,5,1.5])
 
-    st.markdown(
-        f"""
-        <style>
+    # ------------------------------------------------------
 
-        .header-container{{
-            background:white;
-            border-radius:20px;
-            padding:25px;
-            box-shadow:0px 6px 20px rgba(0,0,0,.08);
-            margin-bottom:25px;
-        }}
+    # LOGO
 
-        .header-grid{{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-        }}
+    # ------------------------------------------------------
 
-        .header-left{{
-            display:flex;
-            align-items:center;
-        }}
+    with col_logo:
 
-        .logo{{
-            width:90px;
-            margin-right:25px;
-        }}
+        st.image(LOGO, width=90)
 
-        .titulo{{
-            font-size:34px;
-            font-weight:700;
-            color:#0F4C81;
-            margin:0;
-        }}
+    # ------------------------------------------------------
 
-        .subtitulo{{
-            font-size:17px;
-            color:#666666;
-            margin-top:5px;
-        }}
+    # TITULOS
 
-        .fecha{{
-            font-size:15px;
-            color:#888888;
-            text-align:right;
-        }}
+    # ------------------------------------------------------
 
-        .badge{{
-            display:inline-block;
-            margin-top:15px;
-            background:#D9F2E6;
-            color:#2E8B57;
-            padding:8px 18px;
-            border-radius:30px;
-            font-size:14px;
-            font-weight:bold;
-        }}
+    with col_info:
 
-        </style>
+        st.markdown(
+            """
+            <div class="header-title">
+                Dashboard ESG Corporativo
+            </div>
 
-        <div class="header-container">
+            <div class="header-subtitle">
+                Evaluación Integral de Sostenibilidad
+            </div>
 
-            <div class="header-grid">
+            <div class="header-company">
+                ACUAMAR S.A.
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-                <div class="header-left">
+    # ------------------------------------------------------
 
-                    <img class="logo"
-                    src="data:image/png;base64,{logo}">
+    # FECHA
 
-                    <div>
+    # ------------------------------------------------------
 
-                        <p class="titulo">
-                        Dashboard ESG Corporativo
-                        </p>
+    with col_fecha:
 
-                        <p class="subtitulo">
-                        Evaluación Integral de Sostenibilidad
-                        <br>
-                        ACUAMAR S.A.
-                        </p>
+        st.markdown(
+            f"""
+            <div class="header-date">
 
-                        <div class="badge">
-                        🌍 Environmental • Social • Governance
-                        </div>
+            <b>{fecha}</b>
 
-                    </div>
+            <br>
 
-                </div>
-
-                <div class="fecha">
-
-                    <strong>{fecha}</strong>
-
-                    <br><br>
-
-                    Versión 1.0
-
-                </div>
+            Versión 1.0
 
             </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    st.markdown(
+        """
+        <div class="header-badge">
+
+        🌍 Environmental • Social • Governance
 
         </div>
 
+        <hr>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )

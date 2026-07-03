@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 from utils.carga_datos import cargar_datos
 
@@ -13,6 +14,17 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+# ==========================================================
+# RUTAS DEL PROYECTO
+# ==========================================================
+
+BASE_DIR = Path(__file__).parent
+
+ASSETS = BASE_DIR / "assets"
+
+LOGO = ASSETS / "logo_acuamar.png"
+
+BANNER = ASSETS / "banner_esg.png"
 
 # ==========================================================
 # CARGA DE DATOS
